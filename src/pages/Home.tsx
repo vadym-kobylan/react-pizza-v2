@@ -1,10 +1,9 @@
-import { useState, useEffect, useContext, useRef } from 'react';
-import { SearchContext } from '../App';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'qs';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { setFilters } from '../redux/slices/filterSlice';
+import { setFilters, selectFilter } from '../redux/slices/filterSlice';
 import { fetchPizzas } from '../redux/slices/pizzaSlice';
 
 import { sortList } from '../components/Sort';
@@ -22,10 +21,8 @@ const Home = () => {
   const isSearch = useRef(false);
   const isMounted = useRef(false);
 
-  const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
+  const { categoryId, sort, searchValue, currentPage } = useSelector(selectFilter);
   const { items, status } = useSelector((state) => state.pizza);
-
-  const { searchValue } = useContext(SearchContext);
 
   const getPizzas = async () => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
@@ -80,7 +77,7 @@ const Home = () => {
   }, [categoryId, sort.sortProperty, currentPage, searchValue]);
 
   const pizzas = items.map((item) => <PizzaBlock key={item.id} {...item} />);
-  const sceletons = [...Array(4)].map((e, i) => <PizzaContentLoader key={i} />);
+  const skeletons = [...Array(4)].map((e, i) => <PizzaContentLoader key={i} />);
 
   return (
     <>
@@ -93,7 +90,7 @@ const Home = () => {
       {status === 'error' ? (
         <PizzaEmpty />
       ) : (
-        <div className="content__items">{status === 'loading' ? sceletons : pizzas}</div>
+        <div className="content__items">{status === 'loading' ? skeletons : pizzas}</div>
       )}
 
       <Pagination />
