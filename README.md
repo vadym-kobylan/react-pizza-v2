@@ -1,7 +1,8 @@
 # 🍕 React Pizza v2 (REMASTERED) 🍕
 
-## [Demo](https://react-pizza-v2-by-alongo.vercel.app/)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+### Demo: [**▶️ Click ▶️**](https://react-pizza-v2-by-alongo.vercel.app/)
+
+![App Screenshot](https://react-pizza-v2-by-alongo.vercel.app/project-image.png)
 
 # 🛠 Technology:
 
@@ -30,8 +31,28 @@
 - **[CSS-Modules](https://github.com/css-modules/css-modules)** - we'll be using SCSS along with CSS modules. In fact, you won't have to learn anything new. You'll write the same styles, but already in separate files (css-modules), thus encapsulating your CSS classes.
 - **[Lodash](https://lodash.com/docs)** - a set of ready-made JS functions for a huge number of different tasks.
 
-# 🗄Материалы
+# 🗄Run Locally
 
-[pizzas.json](https://gist.github.com/Archakov06/0421a3edb0ec6f4fc907a6fed3eb5433)
+Clone the project
 
-> 💡 Если каких-то ссылок или материалов не будет хватать в этой странице, пишите в комментариях к видео, чтобы я обновил информацию.
+```bash
+  git clone https://github.com/vadym-kobylan/react-pizza-v2.git
+```
+
+Go to the project directory
+
+```bash
+  cd react-pizza-v2
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
