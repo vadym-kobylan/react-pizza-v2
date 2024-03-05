@@ -1,4 +1,4 @@
-# 🍕 React Pizza v2 (REMASTERED) 🍕
+# 🍕 React Pizza v2 🍕
 
 ### Demo: [**▶️ Click ▶️**](https://react-pizza-v2-by-alongo.vercel.app/)
 
