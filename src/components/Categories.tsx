@@ -1,11 +1,12 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { setCategoryId } from '../redux/slices/filterSlice';
-import { useAppDispatch } from '../redux/store';
+import { setCategoryId } from '../redux/filter/slice';
+import { RootState, useAppDispatch } from '../redux/store';
 
-const Categories = () => {
+const Categories = React.memo(() => {
   const categories = ['All', 'Meat', 'Vegetarian', 'Grill', 'Spicy', 'Closed'];
 
-  const categoryId = useSelector((state: any) => state.filter.categoryId);
+  const categoryId = useSelector((state: RootState) => state.filter.categoryId);
   const dispatch = useAppDispatch();
 
   const onChangeCategory = (index: number) => {
@@ -26,6 +27,6 @@ const Categories = () => {
       </ul>
     </div>
   );
-};
+});
 
 export default Categories;
