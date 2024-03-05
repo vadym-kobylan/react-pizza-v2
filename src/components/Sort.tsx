@@ -1,37 +1,38 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSortType, selectSort } from '../redux/slices/filterSlice';
+import { useSelector } from 'react-redux';
+import { setSortType, selectSort, SortItem, SortPropertyEnum } from '../redux/slices/filterSlice';
+import { useAppDispatch } from '../redux/store';
 
-export const sortList = [
-  { name: 'popular ↑', sortProperty: 'rating' },
-  { name: 'popular ↓', sortProperty: '-rating' },
-  { name: 'price ↑', sortProperty: 'price' },
-  { name: 'price ↓', sortProperty: '-price' },
-  { name: 'alphabetic ↑', sortProperty: 'title' },
-  { name: 'alphabetic ↓', sortProperty: '-title' },
+export const sortList: SortItem[] = [
+  { name: 'popular ↑', sortBy: SortPropertyEnum.RATING_DESC },
+  { name: 'popular ↓', sortBy: SortPropertyEnum.RATING_ASC },
+  { name: 'price ↑', sortBy: SortPropertyEnum.PRICE_DESC },
+  { name: 'price ↓', sortBy: SortPropertyEnum.PRICE_ASC },
+  { name: 'alphabetic ↑', sortBy: SortPropertyEnum.TITLE_DESC },
+  { name: 'alphabetic ↓', sortBy: SortPropertyEnum.TITLE_ASC },
 ];
 
 const Sort = () => {
-  const dispatch = useDispatch();
-  const sort = useSelector(selectSort);
-  const popupRef = useRef();
+  const dispatch = useAppDispatch();
+  const sort: SortItem = useSelector(selectSort);
+  const popupRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const onTypeClick = (el) => {
+  const onTypeClick = (el: SortItem) => {
     dispatch(setSortType(el));
     setIsOpen(false);
   };
 
-  const checkIfClickedOutside = useCallback((e) => {
-    if (popupRef.current && !popupRef.current.contains(e.target)) {
+  const checkIfClickedOutside = useCallback((event: MouseEvent) => {
+    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
       setIsOpen(false);
     }
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      checkIfClickedOutside(e);
+    const handleClickOutside = (event: MouseEvent) => {
+      checkIfClickedOutside(event);
     };
 
     document.addEventListener('click', handleClickOutside);
@@ -63,7 +64,7 @@ const Sort = () => {
             {sortList.map((el, id) => (
               <li
                 key={id}
-                className={sort.sortProperty === el.sortProperty ? 'active' : ''}
+                className={sort.sortBy === el.sortBy ? 'active' : ''}
                 onClick={() => {
                   onTypeClick(el);
                 }}>

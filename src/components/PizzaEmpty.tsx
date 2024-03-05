@@ -1,5 +1,3 @@
-import React from 'react';
-
 const PizzaEmpty = () => {
   return (
     <div className="content__error-info">
