@@ -5,7 +5,7 @@ import { setCurrentPage } from '../../redux/filter/slice';
 import { useDispatch } from 'react-redux';
 import {} from 'react';
 
-const Pagination = () => {
+export const Pagination = () => {
   const dispatch = useDispatch();
 
   return (
@@ -21,5 +21,3 @@ const Pagination = () => {
     />
   );
 };
-
-export default Pagination;

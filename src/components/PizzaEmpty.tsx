@@ -1,4 +1,4 @@
-const PizzaEmpty = () => {
+export const PizzaEmpty = () => {
   return (
     <div className="content__error-info">
       <h2>Such pizzas not found 😕</h2>
@@ -7,4 +7,3 @@ const PizzaEmpty = () => {
   );
 };
 
-export default PizzaEmpty;

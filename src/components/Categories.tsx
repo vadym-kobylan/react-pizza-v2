@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { setCategoryId } from '../redux/filter/slice';
 import { RootState, useAppDispatch } from '../redux/store';
 
-const Categories = React.memo(() => {
+export const Categories = React.memo(() => {
   const categories = ['All', 'Meat', 'Vegetarian', 'Grill', 'Spicy', 'Closed'];
 
   const categoryId = useSelector((state: RootState) => state.filter.categoryId);
@@ -29,4 +29,3 @@ const Categories = React.memo(() => {
   );
 });
 
-export default Categories;

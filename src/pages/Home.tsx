@@ -8,14 +8,16 @@ import { selectFilter } from '../redux/filter/selectors';
 import { fetchPizzas } from '../redux/pizza/slice';
 import { SearchPizzaParams } from '../redux/pizza/types';
 
-import { sortList } from '../components/Sort';
+import {
+  sortList,
+  Categories,
+  Sort,
+  PizzaBlock,
+  PizzaContentLoader,
+  Pagination,
+  PizzaEmpty,
+} from '../components';
 
-import Categories from '../components/Categories';
-import Sort from '../components/Sort';
-import PizzaBlock from '../components/PizzaBlock';
-import PizzaContentLoader from '../components/PizzaContentLoader';
-import Pagination from '../components/Pagination/Pagination';
-import PizzaEmpty from '../components/PizzaEmpty';
 import { RootState, useAppDispatch } from '../redux/store';
 
 const Home: React.FC = () => {
@@ -49,7 +51,7 @@ const Home: React.FC = () => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1)) as unknown as SearchPizzaParams;
 
-      const sort = sortList.find((obj) => obj.sortBy === params.sortBy) || sortList[0];
+      const sort = sortList.find((obj) => obj.sortBy === params.sortBy) ?? sortList[0];
 
       dispatch(
         setFilters({

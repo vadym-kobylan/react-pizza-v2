@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { selectCart } from '../redux/cart/selectors';
 
 import logoSVG from '../assets/img/pizza-logo.svg';
-import Search from './Search/Search';
+import {Search} from './';
 
-const Header = () => {
+export const Header = () => {
   const isMounted = useRef(false);
 
   const { items, totalPrice } = useSelector(selectCart);
@@ -76,5 +76,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;

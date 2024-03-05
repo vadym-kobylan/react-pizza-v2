@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { setSortType } from '../redux/filter/slice';
 import { SortItem, SortPropertyEnum } from '../redux/filter/types';
@@ -15,7 +14,7 @@ export const sortList: SortItem[] = [
   { name: 'alphabetic ↓', sortBy: SortPropertyEnum.TITLE_ASC },
 ];
 
-const Sort = React.memo(() => {
+export const Sort = React.memo(() => {
   const dispatch = useAppDispatch();
   const sort: SortItem = useSelector(selectSort);
   const popupRef = useRef<HTMLDivElement>(null);
@@ -80,5 +79,3 @@ const Sort = React.memo(() => {
     </div>
   );
 });
-
-export default Sort;

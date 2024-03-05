@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-const PizzaContentLoader = (props: any) => (
+export const PizzaContentLoader = (props: any) => (
   <ContentLoader
     className="pizza-block"
     speed={2}
@@ -19,4 +19,3 @@ const PizzaContentLoader = (props: any) => (
   </ContentLoader>
 );
 
-export default PizzaContentLoader;
