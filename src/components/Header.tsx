@@ -30,7 +30,7 @@ export const Header = () => {
           <div className="header__logo">
             <img width="38" src={logoSVG} alt="Pizza logo" />
             <div>
-              <h1>React Pizza v2</h1>
+              <h1>React Pizza v21</h1>
               <p>the most delicious pizza in the universe</p>
             </div>
           </div>
